@@ -4,6 +4,7 @@ package com.example.bookLibraryApp.controllers;
 import com.example.bookLibraryApp.dtos.BookDto;
 import com.example.bookLibraryApp.exceptions.BookException;
 import com.example.bookLibraryApp.services.BookService;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,10 +30,18 @@ public class BookController {
 
 
     @GetMapping
-    public ResponseEntity<List<BookDto>> getBooks() {
+    public ResponseEntity<List<BookDto>> getBooks(@NotNull Model model) {
+        model.addAttribute("books", bookService.getBooks());
         return new ResponseEntity<>(bookService.getBooks(), HttpStatus.OK);
 
+
     }
+
+//    @GetMapping(path = "/books")
+//    public String getBooks(Model model){
+//        model.addAttribute("books", bookService.getBooks());
+//        return "bookList";
+//    }
 
     // Method to add a new book to the Book Library
 

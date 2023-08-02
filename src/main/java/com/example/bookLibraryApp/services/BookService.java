@@ -5,6 +5,7 @@ import com.example.bookLibraryApp.entities.Book;
 import com.example.bookLibraryApp.exceptions.BookException;
 import com.example.bookLibraryApp.mappers.BookMapper;
 import com.example.bookLibraryApp.repositories.BookRepository;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -33,7 +34,7 @@ public class BookService {
         return bookDtos;
     }
 
-    public void addNewBook(BookDto bookDto) {
+    public void addNewBook(@NotNull BookDto bookDto) {
         if(bookRepository.findBookByTitle(bookDto.getTitle()) == null) {
             this.bookRepository.save(BookMapper.dtoToEntity(bookDto));
         }

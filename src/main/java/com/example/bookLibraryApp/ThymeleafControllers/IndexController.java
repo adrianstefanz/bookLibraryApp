@@ -3,7 +3,7 @@ package com.example.bookLibraryApp.ThymeleafControllers;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
-// IndexController.java
+
 @Controller
 public class IndexController {
 

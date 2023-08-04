@@ -1,12 +1,12 @@
 package com.example.bookLibraryApp.dtos;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 @Getter
 @Setter
 @Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class UserReviewDto {
     private Long id;
     private String reviewText;

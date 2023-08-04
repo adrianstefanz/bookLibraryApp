@@ -19,17 +19,16 @@ public class AddBookController {
 
     @GetMapping("/add_book")
     public String showAddBookForm(Model model) {
-        model.addAttribute("book", new BookDto());
+        model.addAttribute("addBook", new BookDto());
         return "add_book";
     }
 
     @PostMapping("/add_book")
     public String addBook(@ModelAttribute BookDto book) {
         bookService.addNewBook(book);
-        return "redirect:/book_library"; // Redirect to a book list page or any other page after adding the book
+        return "redirect:/book_library";
     }
 
-    // Other controller methods if needed
 }
 
 

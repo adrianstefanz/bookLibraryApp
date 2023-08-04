@@ -20,28 +20,23 @@ public class BookController {
     @Autowired
     private BookService bookService;
 
-
     @GetMapping(path = "/{title}")
     public BookDto getBookByTitle(@PathVariable(value = "title") String title) {
         return bookService.getBookByTitle(title);
     }
 
-    // Method to list all books from the Book Library
+    @GetMapping(path = "/{id}")
+    public BookDto getBookById(@PathVariable(value = "id") Long id) {
+        return bookService.getBookById(id);
+    }
 
+    // Method to list all books from the Book Library
 
     @GetMapping
     public ResponseEntity<List<BookDto>> getBooks(@NotNull Model model) {
         model.addAttribute("books", bookService.getBooks());
         return new ResponseEntity<>(bookService.getBooks(), HttpStatus.OK);
-
-
     }
-
-//    @GetMapping(path = "/books")
-//    public String getBooks(Model model){
-//        model.addAttribute("books", bookService.getBooks());
-//        return "bookList";
-//    }
 
     // Method to add a new book to the Book Library
 

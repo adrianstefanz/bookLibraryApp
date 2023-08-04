@@ -22,32 +22,37 @@ public class BookService {
         return BookMapper.entityToDto(bookRepository.findBookByTitle(title));
     }
 
-    public BookDto getBookById(Long bookId){
+    public BookDto getBookById(Long bookId) {
         return BookMapper.entityToDto(bookRepository.findById(bookId).get());
     }
 
     public List<BookDto> getBooks() {
         List<BookDto> bookDtos = new ArrayList<>();
-        for(Book book: bookRepository.findAll()){
+        for (Book book : bookRepository.findAll()) {
             bookDtos.add(BookMapper.entityToDto(book));
         }
         return bookDtos;
     }
 
     public void addNewBook(@NotNull BookDto bookDto) {
-        if(bookRepository.findBookByTitle(bookDto.getTitle()) == null) {
+        if (bookRepository.findBookByTitle(bookDto.getTitle()) == null) {
             this.bookRepository.save(BookMapper.dtoToEntity(bookDto));
-        }
-        else{
+        } else {
             throw new BookException("A book with this title already exists");
         }
     }
 
-    public void updateBook(BookDto bookDto){
+    public void updateBook(BookDto bookDto) {
         this.bookRepository.save(BookMapper.dtoToEntity(bookDto));
     }
 
-    public void deleteBook(BookDto bookDto){
+    public void deleteBook(BookDto bookDto) {
         this.bookRepository.delete(BookMapper.dtoToEntity(bookDto));
     }
+
+    public void deleteBookById(Long id) {
+        bookRepository.deleteById(id);
+    }
+
+
 }

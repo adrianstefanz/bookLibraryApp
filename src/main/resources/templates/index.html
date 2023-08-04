@@ -1,4 +1,3 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
@@ -7,9 +6,11 @@
     <title>Book Library</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" th:href="@{/static/styles.css}"/>
 </head>
 <body>
-<h1>Welcome to the Book Library</h1>
+<div align="center" >
+    <h1>Welcome to the Book Library</h1>
 <p>
     This is a collection of amazing books that you can explore.
 </p>
@@ -18,7 +19,8 @@
     </br>
     <a th:href="@{/add_book}">Add New Book</a>
     </br>
-    <a th:href="@{/delete_book}">Delete Book by Title</a>
+    <a th:href="@{/delete_book}">Delete Book</a>
 </p>
+</div>
 </body>
 </html>

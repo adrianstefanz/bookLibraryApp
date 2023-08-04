@@ -1,6 +1,5 @@
-<!-- books.html -->
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,7 +8,7 @@
     <title>Book Library</title>
 </head>
 <body>
-<h1>Book Library</h1>
+    <h1>Book Library</h1>
 <table class="table table">
     <thead>
     <tr>
@@ -20,15 +19,20 @@
     </thead>
     <tbody>
     <tr th:each="book : ${books}">
+        <a th:href="@{/book_library/{id}(id=${book.id})}"></a>
+            <td>
+                <a th:href="@{'/book_library/' + ${book.id}}" target="_blank" th:text="${book.id}">1</a>
+            </td>
+            <td th:text="${book.title}"></td>
+            <td th:text="${book.yearPublished}"></td>
 
-        <td>
-            <a th:href="@{/books/{id}(id=${book.id})}" th:text="${book.id}"></a>
-        </td>
-        <!--        <td th:text="${book.id}"></td>-->
-        <td th:text="${book.title}"></td>
-        <td th:text="${book.yearPublished}"></td>
     </tr>
     </tbody>
 </table>
+<div align="center">
+    <a th:href="@{/add_book}">Add New Book</a></br>
+    <a th:href="@{/delete_book}">Delete Book</a></br>
+    <a th:href="@{/}">Back to Index</a>
+</div>
 </body>
 </html>

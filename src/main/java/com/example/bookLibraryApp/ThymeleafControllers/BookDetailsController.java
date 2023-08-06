@@ -23,6 +23,7 @@ public class BookDetailsController {
         this.userReviewService = userReviewService;
     }
 
+    // Endpoint to see the book details when you click on book id
     @GetMapping("/book_library/{id}")
     public String showBookDetails(@PathVariable Long id, Model model) {
         BookDto bookDto = bookService.getBookById(id);

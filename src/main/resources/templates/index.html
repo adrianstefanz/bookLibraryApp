@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,7 +10,8 @@
     <style>
         /* Add your gradient background styles here */
         body, .container {
-            background-image: linear-gradient(135deg, #8B4513, #DAA520);
+            background-image: url("https://eder6ypjvgv.exactdn.com/wp-content/uploads/2022/12/Duke_Humfreys_Library_Interior_6_Bodleian_Library_Oxford_UK_-_Diliff.jpg?strip=all&lossy=1&resize=1280%2C650&ssl=1");
+            background-size: cover;
             background-repeat: no-repeat;
             background-attachment: fixed;
             background-size: cover;
@@ -44,17 +45,22 @@
         }
 
         .navigation-links li a {
-            color: #FFFF00; /* Set link color to a complementary color */
+            color: #fff; /* Set link color to white */
             text-decoration: none;
-            padding: 8px 20px; /* Increase the padding for wider buttons */
-            border: 2px solid #FFFF00; /* Add a border with complementary color */
-            border-radius: 4px;
+            padding: 12px 30px; /* Increase the padding for wider buttons */
+            border: 2px solid #ffffff; /* Add a border with complementary color */
+            border-radius: 8px;
             transition: background-color 0.3s, color 0.3s;
+            display: block;
+            width: 100%; /* Make the link full-width */
+            text-align: center;
+            font-size: 18px;
+            background-color: #0087b5; /* Set the background color for the links */
         }
 
         .navigation-links li a:hover {
-            background-color: #0087b5; /* Change background on hover to the link color */
-            color: #fff; /* Change text color on hover to white */
+            background-color: #ffffff; /* Change background on hover to the complementary color */
+            color: #000000; /* Change text color on hover to white */
         }
 
         /* Style the homepage header */
@@ -62,8 +68,8 @@
             font-size: 60px; /* Increase the font size */
             font-weight: bold;
             margin-bottom: 40px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-            color: #FFFF00; /* Set heading color to yellow */
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+            color: #fff; /* Set heading color to white */
         }
     </style>
 </head>
@@ -78,8 +84,8 @@
                 </p>
                 <ul class="navigation-links">
                     <li><a th:href="@{/book_library}">View All Books</a></li>
-                    <li><a th:href="@{/add_book}">Add New Book</a></li>
-                    <li><a th:href="@{/delete_book}">Delete Book</a></li>
+                    <li><a th:href="@{/contact}">Contact</a></li>
+                    <li><a th:href="@{/about}">About</a></li>
                 </ul>
             </div>
         </div>
@@ -87,6 +93,3 @@
 </div>
 </body>
 </html>
-
-
-

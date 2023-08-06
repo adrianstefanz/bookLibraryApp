@@ -5,24 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <title>Books</title>
+    <title>Book Library</title>
     <style>
-        body, .container {
-        background-image: linear-gradient(135deg, #8B4513, #DAA520);
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        background-size: cover;
-        min-height: 100vh;
-        color: #fff; /* Set text color to white */
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        }
-         .container {
-            background-color: rgba(255, 255, 255, 0.9);
-            border-radius: 8px;
-            padding: 20px;
-        }
+        body {
+           /* Dark brown and yellow gradient background */
+           background: linear-gradient(135deg, #804000, #FFD700);
+           background-size: cover;
+           display: flex;
+           justify-content: center;
+           align-items: center;
+           min-height: 100vh;
+           margin: 0;
+           padding: 20px;
+           font-family: Arial, sans-serif;
+           color: #fff;
+       }
+
+       .container {
+           background-color: rgba(255, 255, 255, 0.9);
+           border-radius: 8px;
+           padding: 20px;
+           max-width: 600px;
+       }
+
+        /* Style the navigation links */
         .navigation-links {
             list-style: none;
             padding: 0;
@@ -31,87 +37,121 @@
             justify-content: center;
             gap: 15px;
         }
+
         .navigation-links li {
             display: block;
-            margin-bottom: 10px; /* Add margin to separate the buttons */
+            margin-bottom: 10px;
         }
+
         .navigation-links li a {
-            color: #FFFF00; /* Set link color to a complementary color */
+            color: #fff;
             text-decoration: none;
-            padding: 8px 20px; /* Increase the padding for wider buttons */
-            border: 2px solid #FFFF00; /* Add a border with complementary color */
-            border-radius: 4px;
+            padding: 12px 30px;
+            border: 2px solid #ffffff;
+            border-radius: 8px;
             transition: background-color 0.3s, color 0.3s;
+            display: block;
+            width: 100%;
+            text-align: center;
+            font-size: 18px;
+            background-color: #0087b5;
         }
+
         .navigation-links li a:hover {
-            background-color: #0087b5; /* Change background on hover to the link color */
-            color: #fff; /* Change text color on hover to white */
+            background-color: #ffffff;
+            color: #000000;
         }
+
+        /* Style the homepage header */
         .homepage-header {
-            font-size: 60px; /* Increase the font size */
+            font-size: 48px;
             font-weight: bold;
             margin-bottom: 40px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-            color: #FFFF00; /* Set heading color to yellow */
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
+            color: #000000;
+            text-align: center;
         }
 
+        /* Style the book table */
+        .table {
+            margin-bottom: 30px;
+        }
+
+        .table th {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        .table th,
+        .table td {
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        /* Style the delete book form */
+        .delete-form {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .delete-form label {
+            margin-right: 10px;
+            font-weight: bold;
+            color: #007bff;
+        }
+
+        .delete-form button {
+            background-color: #dc3545;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            padding: 8px 20px;
+            cursor: pointer;
+        }
+
+        .delete-form button:hover {
+            background-color: #c82333;
+        }
     </style>
+
 </head>
 <body>
-<div class="container mt-5">
-    <div class="row justify-content-center">
-        <div class="col-md-6">
-            <div class="text-center">
-                <h1 class="homepage-header">Book Library</h1>
-                <table class="table table">
-                    <thead>
-                    <tr>
-                        <th>Book ID</th>
-                        <th>Book Title</th>
-                        <th>Year Published</th>
-                    </tr>
-                    </thead>
+<div class="container">
+    <div class="text-center">
+        <h1 class="homepage-header">Books Library</h1>
 
-                    <tbody>
-                    <tr th:each="book : ${books}">
-                        <a th:href="@{/book_library/{id}(id=${book.id})}"></a>
-                        <td>
-                            <a th:href="@{'/book_library/' + ${book.id}}" th:text="${book.id}">1</a>
-                        </td>
-                        <td th:text="${book.title}"></td>
-                        <td th:text="${book.yearPublished}"></td>
-                    </tr>
-                    </tbody>
-                </table>
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>Book ID</th>
+                <th>Book Title</th>
+                <th>Year Published</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="book : ${books}">
+                <td><a th:href="@{'/book_library/' + ${book.id}}" th:text="${book.id}"></a></td>
+                <td th:text="${book.title}"></td>
+                <td th:text="${book.yearPublished}"></td>
+            </tr>
+            </tbody>
+        </table>
 
-                <!--<h2>Delete Book by ID</h2>-->
+        <form class="delete-form" th:action="@{/book_library/delete}" method="post"
+              onsubmit="return confirm('Are you sure you want to delete this book?');">
+            <label for="id">Book ID:</label>
+            <input type="text" id="id" name="id" class="form-control" required>
+            <button type="submit" class="btn btn-danger">Delete Book</button>
+        </form>
 
-                <!--<form th:action="@{/book_library/delete}" method="post"-->
-                <!--      onsubmit="return confirm('Are you sure you want to delete this book?');">-->
-                <!--    <label for="id">Book ID:</label>-->
-                <!--    <input type="text" id="id" name="id" required>-->
-                <!--    <button type="submit">Delete Book</button>-->
-                <!--</form>-->
-
-                <div class="row justify-content-center">
-                    <!--    <div class="col-md-6">-->
-                    <form class="form-inline" th:action="@{/book_library/delete}" method="post"
-                          onsubmit="return confirm('Are you sure you want to delete this book?');">
-                        <div class="form-group mr-2">
-                            <label for="id">Book ID:</label>
-                            <input type="text" id="id" name="id" class="form-control" required>
-                        </div>
-                        <button type="submit" class="btn btn-danger">Delete Book</button>
-                    </form>
-                </div>
-            </div>
-
-            <ul class="navigation-links">
-                <li><a th:href="@{/add_book}">Add New Book</a></li>
-                <li><a th:href="@{/delete_book}">Delete Book</a></li>
-                <li><a th:href="@{/}">Back to Index</a></li>
-            </ul>
-
-
+        <ul class="navigation-links">
+            <li><a th:href="@{/add_book}">Add New Book</a></li>
+<!--            <li><a th:href="@{/delete_book}">Delete Book</a></li>-->
+            <li><a th:href="@{/}">Back to Index</a></li>
+        </ul>
+    </div>
+</div>
 </body>
 </html>

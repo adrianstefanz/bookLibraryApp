@@ -11,5 +11,16 @@ public class IndexController {
     public String index() {
         return "index";
     }
-}
 
+
+    @GetMapping("/contact")
+    public String contact() {
+        return "contact";
+    }
+
+    @GetMapping("/about")
+    public String about() {
+        return "about";
+    }
+
+}

@@ -9,7 +9,7 @@ public class UserReviewMapper {
 
     public static UserReviewDto entityToDto(UserReview userReview){
         return UserReviewDto.builder()
-                .id(userReview.getId())
+                .id(userReview.getReviewId())
                 .reviewText(userReview.getReviewText())
                 .bookId(userReview.getBook().getId())
                 .userId(userReview.getUser().getId())
@@ -18,7 +18,7 @@ public class UserReviewMapper {
 
     public static UserReview dtoToEntity(UserReviewDto userReviewDto, Book book, User user){
         UserReview userReview = UserReview.builder()
-                .id(userReviewDto.getId())
+                .reviewId(userReviewDto.getId())
                 .reviewText(userReviewDto.getReviewText())
                 .book(book)
                 .user(user)

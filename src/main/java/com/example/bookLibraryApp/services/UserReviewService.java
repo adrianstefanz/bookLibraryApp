@@ -26,7 +26,7 @@ public class UserReviewService {
 
     public List<UserReviewDto> getReviewsByBook(String title) {
         List<UserReviewDto> userReviewsByBooks = new ArrayList<>();
-        for(UserReview u: userReviewRepository.findAllReviewsByBook(title)){
+        for (UserReview u : userReviewRepository.findAllReviewsByBook(title)) {
             userReviewsByBooks.add(UserReviewMapper.entityToDto(u));
         }
         return userReviewsByBooks;
@@ -34,7 +34,7 @@ public class UserReviewService {
 
     public List<UserReviewDto> getReviewsByUser(String userName) {
         List<UserReviewDto> userReviewsByUser = new ArrayList<>();
-        for(UserReview u: userReviewRepository.findAllReviewsByUser(userName)){
+        for (UserReview u : userReviewRepository.findAllReviewsByUser(userName)) {
             userReviewsByUser.add(UserReviewMapper.entityToDto(u));
         }
         return userReviewsByUser;
@@ -46,4 +46,6 @@ public class UserReviewService {
                 BookMapper.dtoToEntity(bookService.getBookById(userReviewDto.getBookId())),
                 UserMapper.dtoToEntity(userService.getUserById(userReviewDto.getUserId()))));
     }
+
+
 }

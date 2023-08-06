@@ -1,10 +1,7 @@
 package com.example.bookLibraryApp.entities;
 
 import jakarta.persistence.*;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 @Getter
 @Setter
@@ -12,11 +9,13 @@ import lombok.ToString;
 @Entity
 @Table(name = "userReview")
 @Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class UserReview {
 
     @Id
     @GeneratedValue
-    private Long id;
+    private Long reviewId;
     private String reviewText;
 
     @ManyToOne

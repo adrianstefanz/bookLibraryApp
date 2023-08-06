@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,20 +7,86 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" th:href="@{/static/styles.css}"/>
+    <style>
+        /* Add your gradient background styles here */
+        body, .container {
+            background-image: linear-gradient(135deg, #8B4513, #DAA520);
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            min-height: 100vh;
+            color: #fff; /* Set text color to white */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 8px;
+            padding: 20px;
+        }
+
+        /* Style the navigation links */
+        .navigation-links {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .navigation-links li {
+            display: block;
+            margin-bottom: 10px; /* Add margin to separate the buttons */
+        }
+
+        .navigation-links li a {
+            color: #FFFF00; /* Set link color to a complementary color */
+            text-decoration: none;
+            padding: 8px 20px; /* Increase the padding for wider buttons */
+            border: 2px solid #FFFF00; /* Add a border with complementary color */
+            border-radius: 4px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .navigation-links li a:hover {
+            background-color: #0087b5; /* Change background on hover to the link color */
+            color: #fff; /* Change text color on hover to white */
+        }
+
+        /* Style the homepage header */
+        .homepage-header {
+            font-size: 60px; /* Increase the font size */
+            font-weight: bold;
+            margin-bottom: 40px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            color: #FFFF00; /* Set heading color to yellow */
+        }
+    </style>
 </head>
 <body>
-<div align="center" >
-    <h1>Welcome to the Book Library</h1>
-<p>
-    This is a collection of amazing books that you can explore.
-</p>
-<p>
-    <a th:href="@{/book_library}">View All Books</a>
-    </br>
-    <a th:href="@{/add_book}">Add New Book</a>
-    </br>
-    <a th:href="@{/delete_book}">Delete Book</a>
-</p>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="text-center">
+                <h1 class="homepage-header">Welcome to the Book Library</h1>
+                <p>
+                    This is a collection of amazing books that you can explore.
+                </p>
+                <ul class="navigation-links">
+                    <li><a th:href="@{/book_library}">View All Books</a></li>
+                    <li><a th:href="@{/add_book}">Add New Book</a></li>
+                    <li><a th:href="@{/delete_book}">Delete Book</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
 </div>
 </body>
 </html>
+
+
+

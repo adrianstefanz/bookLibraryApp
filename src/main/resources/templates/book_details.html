@@ -4,14 +4,87 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <title>Book Details</title>
+    <style>
+        body, .container {
+           background-image: linear-gradient(135deg, #8B4513, #DAA520);
+           background-repeat: no-repeat;
+           background-attachment: fixed;
+           background-size: cover;
+           min-height: 100vh;
+           color: #fff; /* Set text color to white */
+           display: flex;
+           flex-direction: column;
+           justify-content: center;
+       }
+        .container {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 8px;
+            padding: 20px;
+        }
+        .navigation-links {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+        .navigation-links li {
+            display: block;
+            margin-bottom: 10px; /* Add margin to separate the buttons */
+        }
+        .navigation-links li a {
+            color: #FFFF00; /* Set link color to a complementary color */
+            text-decoration: none;
+            padding: 8px 20px; /* Increase the padding for wider buttons */
+            border: 2px solid #FFFF00; /* Add a border with complementary color */
+            border-radius: 4px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .navigation-links li a:hover {
+            background-color: #0087b5; /* Change background on hover to the link color */
+            color: #fff; /* Change text color on hover to white */
+        }
+        .homepage-header {
+            font-size: 60px; /* Increase the font size */
+            font-weight: bold;
+            margin-bottom: 40px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            color: #FFFF00; /* Set heading color to yellow */
+        }
+
+    </style>
 </head>
 <body>
-<h1>Book Details</h1>
-<p>ID: <span th:text="${bookDetails.id}"></span></p>
-<p>Title: <span th:text="${bookDetails.title}"></span></p>
-<p>Year Published: <span th:text="${bookDetails.yearPublished}"></span></p>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="text-center">
+                <h1 class="homepage-header">Book Details</h1>
+
+                <div class="book-details">
+                    <p>ID: <span th:text="${bookDetails.id}"></span></p>
+                    <p>Title: <span th:text="${bookDetails.title}"></span></p>
+                    <p>Year Published: <span th:text="${bookDetails.yearPublished}"></span></p>
+                </div>
 
 
-<a th:href="@{/book_library}" target="_blank">Back to book list</a>
+                <a th:href="@{/book_library/{id}/edit(id=${bookDetails.id})}">Update Book</a>
+
+
+                <h2>Reviews</h2>
+                <ul>
+                    <li th:each="review : ${bookReviews}" th:text="${review.reviewText}"></li>
+                </ul>
+
+                <form th:action="@{'/book_library/' + ${bookDetails.id} + '/add_review'}" method="post">
+                    <label for="reviewText">Add Review:</label>
+                    <input type="text" id="reviewText" name="reviewText">
+                    <button type="submit">Submit</button>
+                </form>
+
+                <ul class="navigation-links">
+                    <li><a th:href="@{/book_library}" target="_blank">Back to book list</a></li>
+                </ul>
 </body>
 </html>

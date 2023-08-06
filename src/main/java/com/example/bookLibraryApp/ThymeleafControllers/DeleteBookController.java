@@ -19,7 +19,7 @@ public class DeleteBookController {
         return "delete_book";
     }
 
-    @PostMapping("/delete")
+    @PostMapping("/book_library/delete")
     public String deleteBook(@RequestParam("id") Long id) {
         bookService.deleteBookById(id);
         return "redirect:/book_library";

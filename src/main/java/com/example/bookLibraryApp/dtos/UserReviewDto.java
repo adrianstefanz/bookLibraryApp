@@ -8,9 +8,10 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 public class UserReviewDto {
-    private Long id;
+    private Long ReviewId;
+    private String reviewTitle;
     private String reviewText;
-    private Long userId;
+//    private Long userId;
     private Long bookId;
 }
 

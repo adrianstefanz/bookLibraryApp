@@ -103,7 +103,7 @@
     </style>
 </head>
 <body>
-<!--<div class="container mt-5">-->
+
 <div class="text-center">
     <h2 class="homepage-header">Book Details</h2>
 
@@ -112,9 +112,24 @@
         <p>Title: <span th:text="${bookDetails.title}"></span></p>
         <p>Year Published: <span th:text="${bookDetails.yearPublished}"></span></p>
     </div>
+
     <a class="update-button" th:href="@{/book_library/{id}/edit(id=${bookDetails.id})}">Update Book</a>
     </br>
     </br>
+
+
+<!--    <h3>Reviews:</h3>-->
+<!--    <ul>-->
+<!--        <li th:each="userReview : ${reviews}">-->
+<!--            <p>Review ID: <span th:text="${userReview.reviewId}"></span></p>-->
+<!--            <p>Review Title: <span th:text="${userReview.reviewTitle}"></span></p>-->
+<!--            <p>Review Text: <span th:text="${userReview.reviewText}"></span></p>-->
+<!--        </li>-->
+<!--    </ul>-->
+
+<!--    <p><a th:href="@{/book_library/{id}/addReview(id=${bookDetails.id})}">Add Review</a></p>-->
+
+
 
     <a class="back-button" th:href="@{/book_library}" role="button">Back to book list</a>
 

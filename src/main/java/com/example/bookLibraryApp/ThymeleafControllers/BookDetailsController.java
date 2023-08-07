@@ -2,14 +2,14 @@ package com.example.bookLibraryApp.ThymeleafControllers;
 
 
 import com.example.bookLibraryApp.dtos.BookDto;
+import com.example.bookLibraryApp.dtos.UserReviewDto;
+import com.example.bookLibraryApp.entities.UserReview;
 import com.example.bookLibraryApp.services.BookService;
 import com.example.bookLibraryApp.services.UserReviewService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 
 
 @Controller
@@ -48,4 +48,26 @@ public class BookDetailsController {
         bookService.addNewBook(bookDto);
         return "redirect:/book_library/" + id;
     }
+
+// Add review
+
+//    @GetMapping("book_library/{id}/addReview")
+//    public String showReviewForm(@PathVariable("id") Long id, Model model) {
+//        BookDto bookDto = bookService.getBookById(id);
+//        model.addAttribute("book", bookDto);
+//        model.addAttribute("userReview", new UserReview());
+//        return "reviewForm";
+//    }
+//
+//
+//     @PostMapping("book_library/{id}/addReview")
+//    public String addReview(@PathVariable("id") Long id, @ModelAttribute UserReviewDto userReviewDto) {
+//        BookDto bookDto = bookService.getBookById(id);
+//        userReviewDto.setReviewId(id);
+//        userReviewDto.setReviewTitle(userReviewDto.getReviewTitle());
+//        userReviewDto.setReviewText(userReviewDto.getReviewText());
+//        userReviewService.addNewReview(userReviewDto);
+//        return "redirect:/book_library/" + id;
+//    }
+
 }

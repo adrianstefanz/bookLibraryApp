@@ -14,11 +14,13 @@ import lombok.*;
 public class UserReview {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long reviewId;
+    private String reviewTitle;
     private String reviewText;
 
     @ManyToOne
+    @JoinColumn(name = "id")
     private Book book;
 
     @ManyToOne

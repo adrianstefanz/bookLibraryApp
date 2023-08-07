@@ -26,11 +26,11 @@ public class User {
 
     public void addReview(UserReview review){
         reviews.add(review);
-        review.setUser(this);
+//        review.setUser(this);
     }
     public void removeReview(UserReview review){
         reviews.remove(review);
-        review.setUser(null);
+//        review.setUser(null);
     }
 
 }

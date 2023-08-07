@@ -43,8 +43,8 @@ public class UserReviewService {
     public void addNewReview(UserReviewDto userReviewDto) {
         userReviewRepository.save(UserReviewMapper.dtoToEntity(
                 userReviewDto,
-                BookMapper.dtoToEntity(bookService.getBookById(userReviewDto.getBookId())),
-                UserMapper.dtoToEntity(userService.getUserById(userReviewDto.getUserId()))));
+                BookMapper.dtoToEntity(bookService.getBookById(userReviewDto.getBookId()))
+                /*UserMapper.dtoToEntity(userService.getUserById(userReviewDto.getUserId())))*/));
     }
 
 
